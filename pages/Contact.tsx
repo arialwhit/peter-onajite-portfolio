@@ -22,7 +22,7 @@ const Contact: React.FC = () => {
                  </div>
                  <div>
                     <h4 className="font-bold text-lg mb-1">Based in</h4>
-                    <p className="text-slate-400">Lagos, Nigeria (Serving clients globally)</p>
+                    <p className="text-slate-400">Abuja, Nigeria (Serving clients globally)</p>
                  </div>
               </div>
 
@@ -58,6 +58,8 @@ const Contact: React.FC = () => {
 
             <a
               href="https://wa.me/2349139948843"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group p-8 block glass-card rounded-[2rem] border-white/10 hover:border-green-500/40 transition-all duration-300 hover:scale-[1.02]"
             >
               <div className="flex items-center justify-between mb-6">

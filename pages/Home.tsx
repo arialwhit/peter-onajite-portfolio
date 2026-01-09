@@ -55,9 +55,9 @@ const Home: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-6 pt-4 text-slate-400">
-                 <a href="#" className="hover:text-teal-400 transition-colors"><Github size={24} /></a>
-                 <a href="#" className="hover:text-teal-400 transition-colors"><Linkedin size={24} /></a>
-                 <a href="#" className="hover:text-teal-400 transition-colors"><Twitter size={24} /></a>
+                 <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors"><Github size={24} /></a>
+                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors"><Linkedin size={24} /></a>
+                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors"><Twitter size={24} /></a>
               </div>
             </div>
 
@@ -185,6 +185,8 @@ const Home: React.FC = () => {
                 </a>
                 <a
                   href="https://wa.me/2349139948843"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto px-10 py-5 bg-teal-500 text-white font-bold rounded-2xl flex items-center justify-center hover:scale-105 transition-transform"
                 >
                   <MessageCircle className="mr-2" size={20} /> WhatsApp

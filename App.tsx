@@ -25,9 +25,9 @@ const Footer: React.FC = () => (
         <div className="text-2xl font-bold font-['Space_Grotesk']">Peter Onajite</div>
         <p className="text-slate-500 max-w-sm">Crafting premium digital products with precision and creativity.</p>
         <div className="flex space-x-8 text-slate-400">
-           <a href="#" className="hover:text-teal-400 transition-colors">Github</a>
-           <a href="#" className="hover:text-teal-400 transition-colors">LinkedIn</a>
-           <a href="#" className="hover:text-teal-400 transition-colors">Twitter</a>
+           <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">Github</a>
+           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">LinkedIn</a>
+           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">Twitter</a>
         </div>
         <div className="text-slate-600 text-xs pt-4">
           &copy; {new Date().getFullYear()} Peter Onajite. All rights reserved.

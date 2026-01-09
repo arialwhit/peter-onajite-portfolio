@@ -8,16 +8,20 @@ const About: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-[2.5rem] relative">
+            <div className="aspect-[4/5] overflow-hidden rounded-[2.5rem] relative group">
+              {/* Premium Workspace Image representing a high-end product builder environment */}
               <img
-                src="https://picsum.photos/seed/peter/800/1000"
-                alt="Peter Onajite"
-                className="w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=800&h=1000"
+                alt="Elite Developer Workspace"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
               <div className="absolute bottom-8 left-8 right-8">
-                <div className="glass-card p-6 rounded-2xl border-white/20">
-                   <p className="text-sm italic text-slate-200">"Solving complex problems with elegant code is my passion. Building for profitability is my expertise."</p>
+                <div className="glass-card p-6 rounded-2xl border-white/20 shadow-2xl backdrop-blur-xl">
+                   <p className="text-lg font-semibold leading-tight text-white mb-2">
+                     If you want a website, bring your vision and let's change your dreams into a reality.
+                   </p>
+                   <div className="h-1 w-12 bg-teal-500 rounded-full"></div>
                 </div>
               </div>
             </div>
@@ -88,41 +92,42 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Timeline */}
+        {/* Tree-style Timeline */}
         <div className="mt-32">
-          <h3 className="text-3xl font-bold mb-12 text-center">My Professional Journey</h3>
-          <div className="space-y-8 relative before:absolute before:inset-y-0 before:left-1/2 before:w-0.5 before:bg-slate-800 before:-translate-x-1/2 hidden md:block">
-            {[
-              { year: '2023 - Present', title: 'Senior Product Builder', desc: 'Leading the development of complex AI and Fintech platforms for global SaaS founders.' },
-              { year: '2021 - 2023', title: 'Shopify Expert & Consultant', desc: 'Specialized in high-converting e-commerce strategy and custom liquid development.' },
-              { year: '2019 - 2021', title: 'Full-Stack Developer', desc: 'Built and scaled diverse web products using Laravel, React, and Node.js.' },
-              { year: '2017 - 2019', title: 'Mobile Solutions Architect', desc: 'Focused on cross-platform mobile app development using Flutter and Firebase.' },
-            ].map((item, idx) => (
-              <div key={idx} className={`flex items-center justify-between gap-12 ${idx % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                <div className={`w-1/2 ${idx % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                  <h4 className="text-teal-400 font-bold mb-1">{item.year}</h4>
-                  <h5 className="text-xl font-bold mb-2">{item.title}</h5>
-                  <p className="text-slate-400 text-sm max-w-md ml-auto mr-0">{item.desc}</p>
+          <h3 className="text-3xl font-bold mb-16 text-center">My Professional Growth Tree</h3>
+          <div className="relative py-12">
+            {/* The Trunk */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-teal-500/0 via-teal-500 to-teal-500/0 -translate-x-1/2 hidden md:block"></div>
+            
+            <div className="space-y-16 md:space-y-24 relative">
+              {[
+                { year: '2023 - Present', title: 'Senior Product Builder', desc: 'Leading the development of complex AI and Fintech platforms for global SaaS founders.' },
+                { year: '2021 - 2023', title: 'Shopify Expert & Consultant', desc: 'Specialized in high-converting e-commerce strategy and custom liquid development.' },
+                { year: '2019 - 2021', title: 'Full-Stack Developer', desc: 'Built and scaled diverse web products using Laravel, React, and Node.js.' },
+                { year: '2017 - 2019', title: 'Mobile Solutions Architect', desc: 'Focused on cross-platform mobile app development using Flutter and Firebase.' },
+              ].map((item, idx) => (
+                <div key={idx} className={`flex flex-col md:flex-row items-center gap-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                  {/* Content Panel */}
+                  <div className={`w-full md:w-1/2 ${idx % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                    <div className="glass-card p-6 md:p-8 rounded-[2rem] border-white/10 hover:border-teal-500/30 transition-all group">
+                      <span className="text-teal-400 font-bold text-sm tracking-widest uppercase mb-2 block">{item.year}</span>
+                      <h4 className="text-2xl font-bold mb-3 group-hover:text-teal-400 transition-colors">{item.title}</h4>
+                      <p className="text-slate-400 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+
+                  {/* Node (The Branch Connection) */}
+                  <div className="relative flex items-center justify-center">
+                    <div className="w-6 h-6 rounded-full bg-teal-500 border-4 border-slate-950 shadow-[0_0_15px_rgba(45,212,191,0.8)] z-10"></div>
+                    {/* Branch line for desktop */}
+                    <div className={`absolute h-0.5 bg-teal-500/30 hidden md:block ${idx % 2 === 0 ? 'right-full w-12' : 'left-full w-12'}`}></div>
+                  </div>
+
+                  {/* Empty space for balance on desktop */}
+                  <div className="hidden md:block w-1/2"></div>
                 </div>
-                <div className="relative z-10 w-4 h-4 rounded-full bg-teal-500 border-4 border-slate-950 shadow-[0_0_10px_rgba(45,212,191,0.5)]"></div>
-                <div className="w-1/2"></div>
-              </div>
-            ))}
-          </div>
-          {/* Mobile timeline */}
-          <div className="md:hidden space-y-8">
-             {[
-              { year: '2023 - Present', title: 'Senior Product Builder', desc: 'Leading the development of complex AI and Fintech platforms for global SaaS founders.' },
-              { year: '2021 - 2023', title: 'Shopify Expert & Consultant', desc: 'Specialized in high-converting e-commerce strategy and custom liquid development.' },
-              { year: '2019 - 2021', title: 'Full-Stack Developer', desc: 'Built and scaled diverse web products using Laravel, React, and Node.js.' },
-              { year: '2017 - 2019', title: 'Mobile Solutions Architect', desc: 'Focused on cross-platform mobile app development using Flutter and Firebase.' },
-            ].map((item, idx) => (
-              <div key={idx} className="glass-card p-6 rounded-2xl border-white/10">
-                <span className="text-teal-400 font-bold text-xs uppercase tracking-widest">{item.year}</span>
-                <h5 className="text-xl font-bold mt-1 mb-2">{item.title}</h5>
-                <p className="text-slate-400 text-sm">{item.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
