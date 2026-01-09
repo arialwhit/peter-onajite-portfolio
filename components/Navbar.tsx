@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-blue-500 rounded-lg flex items-center justify-center neon-glow">
               <Terminal className="text-white" size={24} />
             </div>
-            <span className="text-xl font-bold font-['Space_Grotesk'] tracking-tight">Coach Peter</span>
+            <span className="text-xl font-bold font-['Space_Grotesk'] tracking-tight">Peter Onajite</span>
           </Link>
 
           {/* Desktop Nav */}

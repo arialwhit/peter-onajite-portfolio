@@ -11,7 +11,7 @@ const About: React.FC = () => {
             <div className="aspect-[4/5] overflow-hidden rounded-[2.5rem] relative">
               <img
                 src="https://picsum.photos/seed/peter/800/1000"
-                alt="Coach Peter Onajite"
+                alt="Peter Onajite"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
@@ -31,7 +31,7 @@ const About: React.FC = () => {
               <h2 className="text-teal-400 font-bold uppercase tracking-widest text-sm mb-4">About the Architect</h2>
               <h1 className="text-5xl font-bold mb-6">Elevating Digital <span className="gradient-text">Experiences</span></h1>
               <p className="text-slate-400 text-lg leading-relaxed">
-                I am Coach Peter Onajite, a dedicated Full-Stack Web and Mobile Developer with a specialized focus on Fintech, Shopify, and AI-driven solutions. My mission is to build digital products that aren't just functional, but powerful and profitable.
+                I am Peter Onajite, a dedicated Full-Stack Web and Mobile Developer with a specialized focus on Fintech, Shopify, and AI-driven solutions. My mission is to build digital products that aren't just functional, but powerful and profitable.
               </p>
             </div>
 
@@ -88,7 +88,7 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Timeline placeholder */}
+        {/* Timeline */}
         <div className="mt-32">
           <h3 className="text-3xl font-bold mb-12 text-center">My Professional Journey</h3>
           <div className="space-y-8 relative before:absolute before:inset-y-0 before:left-1/2 before:w-0.5 before:bg-slate-800 before:-translate-x-1/2 hidden md:block">

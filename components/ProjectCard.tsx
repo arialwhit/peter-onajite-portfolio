@@ -20,6 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className="relative aspect-video w-full overflow-hidden bg-slate-800">
         <iframe
           src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+          title={`${project.title} showcase`}
           className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
           frameBorder="0"
           allow="autoplay; fullscreen"

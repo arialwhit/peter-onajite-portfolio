@@ -94,7 +94,7 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: "https://picsum.photos/seed/sarah/100/100",
   },
   {
-    quote: "Professional, efficient, and highly skilled. Coach Peter knows exactly how to build for scale.",
+    quote: "Professional, efficient, and highly skilled. Peter knows exactly how to build for scale.",
     author: "Marcus Thorne",
     role: "CTO, TechPulse",
     avatar: "https://picsum.photos/seed/marcus/100/100",

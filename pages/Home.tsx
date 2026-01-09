@@ -30,7 +30,7 @@ const Home: React.FC = () => {
 
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
-                  I'm <span className="gradient-text">Coach Peter</span>
+                  I'm <span className="gradient-text">Peter Onajite</span>
                   <br />
                   <span className="text-slate-100">Product Builder</span>
                 </h1>
