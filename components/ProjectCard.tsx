@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Play, ExternalLink } from 'lucide-react';
 import { Project } from '../types';
 
@@ -9,6 +9,27 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    if (project.vimeoId) {
+      fetch(`https://vimeo.com/api/v2/video/${project.vimeoId}.json`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (isMounted && data && data[0]) {
+            setThumbnailUrl(data[0].thumbnail_large || data[0].thumbnail_medium);
+          }
+        })
+        .catch(() => {
+          // Fallback handled gracefully
+        });
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [project.vimeoId]);
 
   return (
     <div
@@ -16,22 +37,42 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Vimeo Container */}
+      {/* Media Container */}
       <div className="relative aspect-video w-full overflow-hidden bg-slate-800">
-        <iframe
-          src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-          title={`${project.title} showcase`}
-          className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-          allowFullScreen
-        ></iframe>
+        {/* Placeholder Gradient / Loading Shimmer */}
+        <div className={`absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 transition-opacity duration-500 ${imageLoaded ? 'opacity-0' : 'opacity-100'}`}>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_1.5s_infinite]"></div>
+        </div>
 
-        {/* Overlay */}
-        <div className={`absolute inset-0 bg-slate-950/60 transition-opacity duration-300 flex items-center justify-center ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+        {/* Thumbnail Image */}
+        {thumbnailUrl && (
+          <img
+            src={thumbnailUrl}
+            alt={`${project.title} preview`}
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${isHovered ? 'scale-105 opacity-40' : 'opacity-80'}`}
+          />
+        )}
+
+        {/* Delayed Active Video Iframe (mounted dynamically on hover) */}
+        {isHovered && (
+          <iframe
+            src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+            title={`${project.title} showcase`}
+            className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-500"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
+        )}
+
+        {/* Play Overlay */}
+        <div className={`absolute inset-0 bg-slate-950/60 transition-opacity duration-300 flex items-center justify-center z-20 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
            <div className="text-white flex flex-col items-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
               <Play size={40} className="mb-2 fill-teal-400 text-teal-400" />
-              <span className="font-bold text-sm tracking-widest uppercase">View Showcase</span>
+              <span className="font-bold text-sm tracking-widest uppercase">Live Showcase</span>
            </div>
         </div>
       </div>

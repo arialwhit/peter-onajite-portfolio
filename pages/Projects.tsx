@@ -1,7 +1,31 @@
 
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { PROJECTS } from '../constants';
 import ProjectCard from '../components/ProjectCard';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 25 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      type: 'spring', 
+      stiffness: 110, 
+      damping: 16 
+    } 
+  }
+};
 
 const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -34,12 +58,20 @@ const Projects: React.FC = () => {
           ))}
         </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grid with entry animation */}
+        <motion.div
+          key={activeFilter}
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {filteredProjects.map(project => (
-            <ProjectCard key={project.id} project={project} />
+            <motion.div key={project.id} variants={cardVariants}>
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -68,16 +68,50 @@ export const PROJECTS: Project[] = [
 ];
 
 export const SKILLS: Skill[] = [
-  { name: 'HTML/CSS', level: 98, icon: 'Layout', category: 'frontend' },
-  { name: 'JavaScript', level: 95, icon: 'Code', category: 'frontend' },
-  { name: 'React', level: 92, icon: 'Layers', category: 'frontend' },
+  // Frontend
+  { name: 'React', level: 96, icon: 'Layers', category: 'frontend' },
+  { name: 'Next.js', level: 94, icon: 'Zap', category: 'frontend' },
+  { name: 'JavaScript', level: 98, icon: 'Code', category: 'frontend' },
+  { name: 'TypeScript', level: 95, icon: 'Code', category: 'frontend' },
+  { name: 'HTML5', level: 97, icon: 'Layout', category: 'frontend' },
+  { name: 'CSS3', level: 93, icon: 'Palette', category: 'frontend' },
   { name: 'Tailwind CSS', level: 96, icon: 'Zap', category: 'frontend' },
-  { name: 'PHP/Laravel', level: 94, icon: 'Server', category: 'backend' },
-  { name: 'SQL/MySQL', level: 90, icon: 'Database', category: 'backend' },
-  { name: 'Flutter', level: 88, icon: 'Smartphone', category: 'mobile' },
-  { name: 'Firebase', level: 85, icon: 'Flame', category: 'mobile' },
-  { name: 'Shopify', level: 97, icon: 'ShoppingBag', category: 'ecommerce' },
-  { name: 'AI Integration', level: 89, icon: 'Cpu', category: 'other' },
+
+  // Backend
+  { name: 'Node.js', level: 94, icon: 'Server', category: 'backend' },
+  { name: 'Express.js', level: 91, icon: 'Cpu', category: 'backend' },
+  { name: 'Java', level: 89, icon: 'Coffee', category: 'backend' },
+  { name: 'REST API Development', level: 93, icon: 'Globe', category: 'backend' },
+
+  // Database
+  { name: 'MongoDB', level: 90, icon: 'Database', category: 'database' },
+  { name: 'SQL / MySQL', level: 92, icon: 'Database', category: 'database' },
+
+  // Authentication & Security
+  { name: 'JWT', level: 92, icon: 'Key', category: 'auth' },
+  { name: 'OAuth', level: 91, icon: 'Key', category: 'auth' },
+  { name: 'Role-Based Access Control', level: 93, icon: 'Shield', category: 'auth' },
+
+  // AI / Advanced Integrations
+  { name: 'OpenAI API', level: 94, icon: 'Sparkles', category: 'ai' },
+  { name: 'AI System Integration', level: 92, icon: 'Cpu', category: 'ai' },
+  { name: 'Prompt Engineering', level: 95, icon: 'Terminal', category: 'ai' },
+  { name: 'Trading AI Systems', level: 88, icon: 'TrendingUp', category: 'ai' },
+
+  // Real-Time / Financial
+  { name: 'WebSocket', level: 91, icon: 'Activity', category: 'realtime' },
+  { name: 'TradingView Integration', level: 90, icon: 'AreaChart', category: 'realtime' },
+  { name: 'Market Data API Integration', level: 89, icon: 'Coins', category: 'realtime' },
+  { name: 'Chart Systems', level: 91, icon: 'LineChart', category: 'realtime' },
+
+  // Payments / SaaS
+  { name: 'Stripe', level: 95, icon: 'CreditCard', category: 'payments' },
+  { name: 'Subscription Systems', level: 92, icon: 'Repeat', category: 'payments' },
+
+  // E-commerce / CMS
+  { name: 'Shopify Development', level: 97, icon: 'ShoppingBag', category: 'ecommerce' },
+  { name: 'Payment Integration', level: 94, icon: 'CreditCard', category: 'ecommerce' },
+  { name: 'Product Systems', level: 93, icon: 'Package', category: 'ecommerce' }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

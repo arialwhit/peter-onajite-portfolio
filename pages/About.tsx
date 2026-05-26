@@ -1,6 +1,69 @@
 
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Award, Target, Rocket, Briefcase } from 'lucide-react';
+
+const AnimatedCounter: React.FC<{ target: number; duration?: number; suffix?: string; prefix?: string }> = ({
+  target,
+  duration = 1500,
+  suffix = '',
+  prefix = ''
+}) => {
+  const [count, setCount] = useState(0);
+  const elementRef = useRef<HTMLDivElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let startTime: number | null = null;
+    const startValue = 0;
+
+    const updateCounter = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      // Ease out quad
+      const easeProgress = progress * (2 - progress);
+      const currentCount = Math.floor(easeProgress * target);
+
+      setCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        setCount(target);
+      }
+    };
+
+    requestAnimationFrame(updateCounter);
+  }, [hasStarted, target, duration]);
+
+  return (
+    <span ref={elementRef}>
+      {prefix}
+      {count}
+      {suffix}
+    </span>
+  );
+};
 
 const About: React.FC = () => {
   return (
@@ -88,6 +151,41 @@ const About: React.FC = () => {
                 >
                   Let's Work Together
                 </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Achievements Section */}
+        <div className="mt-32 bg-slate-900/40 rounded-[2.5rem] p-8 md:p-16 border border-white/5 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-teal-500/5 blur-3xl rounded-full"></div>
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/5 blur-3xl rounded-full"></div>
+          
+          <div className="relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-teal-400 font-bold uppercase tracking-widest text-sm mb-4">Milestones & Impact</h2>
+              <h3 className="text-4xl font-bold">Key Professional <span className="gradient-text">Achievements</span></h3>
+              <p className="text-slate-400 mt-4 max-w-2xl mx-auto">
+                A track record of engineering clean, high-performance web products that drive tangible user growth and secure backend operations.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { target: 100, suffix: '+', label: 'Projects Completed', desc: 'Successfully shipped for global startups & enterprises.' },
+                { target: 40, suffix: '%', label: 'Conversion Increase', desc: 'E-commerce optimization via custom liquid/Shopify structures.' },
+                { target: 20, suffix: '+', label: 'Full-Stack Apps Built', desc: 'Scalable cloud platforms using Node, Express, Laravel & React.' },
+                { target: 12, suffix: '+', label: 'AI & Trading Systems', desc: 'Secure prompt pipelines, LLM fine-tuning, and market integration.' }
+              ].map((ach, idx) => (
+                <div key={idx} className="glass-card p-6 md:p-8 rounded-3xl border-white/10 text-center flex flex-col justify-between group hover:border-teal-500/30 transition-colors duration-300">
+                  <div>
+                    <div className="text-5xl font-extrabold text-teal-400 font-['Space_Grotesk'] mb-4">
+                      <AnimatedCounter target={ach.target} suffix={ach.suffix} />
+                    </div>
+                    <h4 className="text-lg font-bold mb-3">{ach.label}</h4>
+                    <p className="text-slate-400 text-sm leading-relaxed">{ach.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

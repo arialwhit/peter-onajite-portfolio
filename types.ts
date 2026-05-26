@@ -12,7 +12,7 @@ export interface Skill {
   name: string;
   level: number; // 0 to 100
   icon: string;
-  category: 'frontend' | 'backend' | 'mobile' | 'ecommerce' | 'other';
+  category: 'frontend' | 'backend' | 'database' | 'auth' | 'ai' | 'realtime' | 'payments' | 'ecommerce';
 }
 
 export interface Testimonial {
